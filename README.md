@@ -16,5 +16,5 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 
 ## 3. Copy config from github
 ```
-git clone https://github.com/tcFeyn/Neovim.git \
+git clone https://github.com/tcFeyn/Neovim.git ~/.config/nvim
 ```
