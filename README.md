@@ -3,18 +3,23 @@ Personal neovim config to work as an IDE
 
 # Installation
 
-## 1. OS Dependencies
-* neovim (obviously)
+## 1. Dependencies
+* neovim [stable](https://github.com/neovim/neovim/releases/tag/stable) or [nightly](https://github.com/neovim/neovim/releases/tag/nightly)
 
-* gcc (for treesitter to compile)
+* Basic tools: ``` git, make, unzip ```
 
-## 2. Set up [Packer](https://github.com/wbthomason/packer.nvim)
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim \
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
+* [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 
-## 3. Copy config from github
-```
-git clone https://github.com/tcFeyn/Neovim.git ~/.config/nvim
-```
+* [fd-find](https://github.com/sharkdp/fd#installation)
+
+## 2. Install Lang Servers ( :help lspcondfig-all to search )
+
+* Lua: ``` brew install lua-language-server ```
+
+* Python: ``` pip3 install pyright ```
+
+* YML: ``` brew install yaml-language-server ```
+
+* Ansible: ``` brew install ansible-language-server ```
+
+* Bash: ``` brew install bash-language-server ```

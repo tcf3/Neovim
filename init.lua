@@ -1,3 +1,4 @@
-require("plugins")
-require("remaps")
-require("config")
+require("config.nvim")
+require("config.remaps")
+require("config.lazy")
+require("config.functions")
