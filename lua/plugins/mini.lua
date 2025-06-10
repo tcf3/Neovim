@@ -6,9 +6,9 @@ return {
     require('mini.statusline').setup()
 
     -- Tab Line
-    require('mini.tabline').setup({
-      tabpage_section = 'right',
-    })
+    --require('mini.tabline').setup({
+    --  tabpage_section = 'right',
+    --})
 
     -- Git
     require('mini.git').setup()

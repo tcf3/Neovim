@@ -1,5 +1,5 @@
 -- Colorscheme
-vim.cmd.colorscheme "tokyonight-storm"
+vim.cmd.colorscheme "onedark"
 
 -- Use JK to move in mini.starter
 vim.cmd([[
