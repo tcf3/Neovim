@@ -35,7 +35,6 @@ return {
         { name = " Create file", action = ":enew", section = "Menu" },
         { name = " Open file", action = require('telescope.builtin').find_files, section = "Menu" },
         { name = "󰿅 Quit Neovim", action = ":qa!", section = "Menu" },
-        --starter.sections.recent_files(10, false),
       },
       content_hooks = {
         starter.gen_hook.adding_bullet(" "),
