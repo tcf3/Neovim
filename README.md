@@ -16,7 +16,7 @@ Personal neovim config to work as an IDE
 
 * Lua: ``` brew install lua-language-server ```
 
-* Python: ``` pip3 install pyright ```
+* Python: ``` brew install pyright ```
 
 * YML: ``` brew install yaml-language-server ```
 
