@@ -8,9 +8,9 @@ return {
   vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true }),
   config = function()
     require("nvim-tree").setup {
-      sort = {
-        sorter = "case_sensitive",
-      },
+      sync_root_with_cwd = true,
+      reload_on_bufenter = true,
+      respect_buf_cwd = true,
       view = {
         width = 40,
       },
