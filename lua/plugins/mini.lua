@@ -30,7 +30,7 @@ return {
       }, "\n"),
       footer = " " .. os.date(),
       items = {
-        { name = "󰟐 Homelab", action = ":cd ~/Documents/Homelab/ | :NvimTreeOpen", section = "Places" },
+        { name = " Code", action = ":cd ~/Documents/Code/ | :NvimTreeOpen", section = "Places" },
         { name = " Git", action = ":cd ~/Documents/Git/ | :NvimTreeOpen", section = "Places" },
         { name = " Create file", action = ":enew", section = "Menu" },
         { name = " Open file", action = require('telescope.builtin').find_files, section = "Menu" },
