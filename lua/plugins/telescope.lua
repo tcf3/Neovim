@@ -15,8 +15,6 @@ return {
 
       require('telescope').load_extension('fzf')
 
-      --vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-
       vim.keymap.set("n", "<Leader>ff", require('telescope.builtin').find_files)
       vim.keymap.set("n", "<Leader>fh", require('telescope.builtin').help_tags)
       vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep)
