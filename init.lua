@@ -1,4 +1,5 @@
-require("config.core")
-require("config.misc")
-require("config.remaps")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.lsp")
 require("config.lazy")

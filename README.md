@@ -23,3 +23,7 @@ Personal neovim config to work as an IDE
 * Ansible: ``` brew install ansible-language-server ```
 
 * Bash: ``` brew install bash-language-server ```
+
+## 3. Custom language lsp config can be found in here
+
+https://github.com/neovim/nvim-lspconfig/tree/master/lsp
