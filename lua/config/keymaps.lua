@@ -1,3 +1,6 @@
+-- Disable Space bar since it will be used as the leader key
+vim.keymap.set({ "n", "v" }, "<leader>", "<nop>")
+
 -- Set space as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -8,26 +11,24 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" }
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
--- Better indenting in visual mode
-vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
-vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-
 -- Replace text
 vim.keymap.set("n", "<Leader>r", [[:%s///g<Left><Left><Left>]], { noremap = true, silent = false })
 
--- Next / previous buffer
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+-- Navigate through buffers
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer", silent = false })
+vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer", silent = false })
 
 -- Delete current buffer
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete buffer" })
 
--- Move between windows
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "Move left" })
-vim.keymap.set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true, desc = "Move down" })
-vim.keymap.set("n", "<leader>wk", "<C-w>k", { noremap = true, silent = true, desc = "Move up" })
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "Move right" })
-vim.keymap.set("n", "<leader>ww", "<C-w>w", { noremap = true, silent = true, desc = "Cycle windows" })
+-- Paste without replacing paste with what you are highlighted over
+--vim.keymap.set("n", "<leader>p", '"_dP')
+
+-- Swap between split buffers
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true, silent = true, desc = "Move left" })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true, silent = true, desc = "Move down" })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true, silent = true, desc = "Move up" })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true, silent = true, desc = "Move right" })
 
 -- Window management
 vim.keymap.set("n", "<leader>wq", "<C-w>q", { noremap = true, silent = true, desc = "Quit window" })
@@ -40,8 +41,9 @@ vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, silent = true, des
 vim.keymap.set("n", "<leader>w+", "10<C-w>>", { noremap = true, silent = true, desc = "Increase width" })
 vim.keymap.set("n", "<leader>w-", "10<C-w><", { noremap = true, silent = true, desc = "Decrease width" })
 
--- Move Lines
-vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+-- Move selection
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-h>", "<gv")
+vim.keymap.set("v", "<C-l>", ">gv")
+
