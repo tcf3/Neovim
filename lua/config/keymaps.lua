@@ -21,8 +21,8 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer", silen
 -- Delete current buffer
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete buffer" })
 
--- Paste without replacing paste with what you are highlighted over
---vim.keymap.set("n", "<leader>p", '"_dP')
+-- Paste without yanking replaced text
+vim.keymap.set("x", "p", '"_dP')
 
 -- Swap between split buffers
 vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true, silent = true, desc = "Move left" })
@@ -46,4 +46,14 @@ vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<C-h>", "<gv")
 vim.keymap.set("v", "<C-l>", ">gv")
+
+-- Toogle LSP warnings in current buffer
+vim.keymap.set("n", "<leader>ll", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  local enabled = vim.diagnostic.is_enabled({ bufnr = bufnr })
+  vim.diagnostic.enable(not enabled, { bufnr = bufnr })
+
+  vim.notify("Diagnostics " .. (enabled and "disabled" or "enabled"), vim.log.levels.INFO, { title = "LSP" })
+end, { desc = "Toggle diagnostics (buffer)" })
 
