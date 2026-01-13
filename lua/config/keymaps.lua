@@ -19,7 +19,8 @@ vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer", silent = fals
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer", silent = false })
 
 -- Delete current buffer
-vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>ba", ":%bdelete<CR>", { noremap = true, silent = true, desc = "Delete all buffers" })
 
 -- Paste without yanking replaced text
 vim.keymap.set("x", "p", '"_dP')
