@@ -5,7 +5,9 @@ return {
   ---@type snacks.Config
   opts = {
     explorer = {},
-    picker = {},
+    picker = {
+      layout = "telescope"
+    },
     indent = {},
   },
 
