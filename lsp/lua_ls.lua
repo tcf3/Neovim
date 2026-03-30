@@ -1,17 +1,27 @@
-vim.lsp.config['lua_ls'] = {
+local root_markers1 = {
+  '.emmyrc.json',
+  '.luarc.json',
+  '.luarc.jsonc',
+}
+local root_markers2 = {
+  '.luacheckrc',
+  '.stylua.toml',
+  'stylua.toml',
+  'selene.toml',
+  'selene.yml',
+}
+
+---@type vim.lsp.Config
+return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
-  -- Sets the "workspace" to the directory where any of these files is found.
-  -- Files that share a root directory will reuse the LSP server connection.
-  -- Nested lists indicate equal priority, see |vim.lsp.Config|.
-  root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
-  -- Specific settings to send to the server. The schema is server-defined.
-  -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+  root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers1, root_markers2, { '.git' } }
+    or vim.list_extend(vim.list_extend(root_markers1, root_markers2), { '.git' }),
+  ---@type lspconfig.settings.lua_ls
   settings = {
     Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      }
-    }
-  }
+      codeLens = { enable = true },
+      hint = { enable = true, semicolon = 'Disable' },
+    },
+  },
 }

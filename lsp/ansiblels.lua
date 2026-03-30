@@ -1,5 +1,5 @@
--- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ansiblels.lua
-vim.lsp.config['ansiblels'] = {
+---@type vim.lsp.Config
+return {
   cmd = { 'ansible-language-server', '--stdio' },
   settings = {
     ansible = {
