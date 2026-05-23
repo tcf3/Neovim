@@ -12,24 +12,21 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
 -- Replace text
-vim.keymap.set("n", "<Leader>r", [[:%s///g<Left><Left><Left>]], { noremap = true, silent = false })
+vim.keymap.set("n", "<Leader>r", [[:%s///g<Left><Left><Left>]], { noremap = true, silent = false, desc = "Replace text" })
 
--- Navigate through buffers
-vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer", silent = false })
-vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer", silent = false })
+-- Navigate to next/prev buffers
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = false, desc = "Next buffer" })
+vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = false, desc = "Previous buffer" })
 
 -- Delete current buffer
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>ba", ":%bdelete<CR>", { noremap = true, silent = true, desc = "Delete all buffers" })
 
--- Paste without yanking replaced text
-vim.keymap.set("x", "p", '"_dP')
-
 -- Swap between split buffers
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true, silent = true, desc = "Move left" })
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true, silent = true, desc = "Move down" })
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true, silent = true, desc = "Move up" })
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true, silent = true, desc = "Move right" })
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true, silent = true, desc = "Move buffer left" })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true, silent = true, desc = "Move buffer down" })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true, silent = true, desc = "Move buffer up" })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true, silent = true, desc = "Move buffer right" })
 
 -- Window management
 vim.keymap.set("n", "<leader>wq", "<C-w>q", { noremap = true, silent = true, desc = "Quit window" })
@@ -38,23 +35,18 @@ vim.keymap.set("n", "<leader>wo", "<C-w>o", { noremap = true, silent = true, des
 vim.keymap.set("n", "<leader>ws", "<C-w>s", { noremap = true, silent = true, desc = "Horizontal split" })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, silent = true, desc = "Vertical split" })
 
--- Resize windows (bigger step: 5)
-vim.keymap.set("n", "<leader>w+", "10<C-w>>", { noremap = true, silent = true, desc = "Increase width" })
-vim.keymap.set("n", "<leader>w-", "10<C-w><", { noremap = true, silent = true, desc = "Decrease width" })
-
 -- Move selection
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<C-h>", "<gv")
 vim.keymap.set("v", "<C-l>", ">gv")
 
--- Toogle LSP warnings in current buffer
-vim.keymap.set("n", "<leader>ll", function()
-  local bufnr = vim.api.nvim_get_current_buf()
+-- Paste & delete without yanking replaced text
+vim.keymap.set("x", "p", '"_dP')
+-- vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
 
-  local enabled = vim.diagnostic.is_enabled({ bufnr = bufnr })
-  vim.diagnostic.enable(not enabled, { bufnr = bufnr })
-
-  vim.notify("Diagnostics " .. (enabled and "disabled" or "enabled"), vim.log.levels.INFO, { title = "LSP" })
-end, { desc = "Toggle diagnostics (buffer)" })
-
+-- Native undotree
+vim.keymap.set("n", "<leader>u", function()
+  vim.cmd.packadd("nvim.undotree")
+  require("undotree").open()
+end, { desc = "Toggle Builtin Undotree" })

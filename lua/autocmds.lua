@@ -65,6 +65,42 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
   end,
 })
 
+-- Autoformat on save on specific files
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.lua", "*.yml", "*.yaml", "*.py", "*.sh" },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+-- Switch buffers by number
+local function get_ordered_buffers()
+  local bufs = vim.api.nvim_list_bufs()
+  local listed = {}
+
+  for _, buf in ipairs(bufs) do
+    if vim.bo[buf].buflisted then
+      table.insert(listed, buf)
+    end
+  end
+
+  table.sort(listed, function(a, b)
+    return a < b
+  end)
+
+  return listed
+end
+
+for i = 1, 9 do
+  vim.keymap.set("n", "<A-" .. i .. ">", function()
+    local bufs = get_ordered_buffers()
+    local target = bufs[i]
+    if target then
+      vim.api.nvim_set_current_buf(target)
+    end
+  end)
+end
+
 -- ide like highlight when stopping cursor
 --vim.api.nvim_create_autocmd("CursorMoved", {
 --  group = vim.api.nvim_create_augroup("LspReferenceHighlight", { clear = true }),
@@ -89,8 +125,8 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 --    end
 --  end,
 --})
---
----- ide like highlight when stopping cursor
+
+-- ide like highlight when stopping cursor
 --vim.api.nvim_create_autocmd("CursorMovedI", {
 --  group = "LspReferenceHighlight",
 --  desc = "Clear highlights when entering insert mode",
@@ -98,4 +134,3 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 --    vim.lsp.buf.clear_references()
 --  end,
 --})
-
