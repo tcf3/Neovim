@@ -1,29 +1,40 @@
-# Neovim
-Personal neovim config to work as an IDE
+# Neovim Config
 
-# Installation
+This config turns Neovim into an IDE.
 
-## 1. Dependencies
-* neovim [stable](https://github.com/neovim/neovim/releases/tag/stable) or [nightly](https://github.com/neovim/neovim/releases/tag/nightly)
+## Plugins
 
-* Basic tools: ``` git, make, unzip ```
+- [onedark.nvim](https://github.com/navarasu/onedark.nvim) — colorscheme
+- [mini.nvim](https://github.com/nvim-mini/mini.nvim) — files, completion, snippets, surround, diff, statusline, icons, and more
+- [snacks.nvim](https://github.com/folke/snacks.nvim) — explorer, picker, scroll, indent
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) — LSP configuration
+- [mason.nvim](https://github.com/mason-org/mason.nvim) — LSP servers, DAP servers, linters, and formatters installer
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) — snippet collection
 
-* [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+## Dependencies
 
-* [fd-find](https://github.com/sharkdp/fd#installation)
+- Neovim >= 0.10
+- [ripgrep](https://github.com/BurntSushi/ripgrep) — grep backend
+- Nerd Font — icons
+- Git
 
-## 2. Install Lang Servers ( :help lspcondfig-all to search )
+### macOS
 
-* Lua: ``` brew install lua-language-server ```
+```sh
+brew install neovim ripgrep
+brew install --cask font-jetbrains-mono-nerd-font
+```
 
-* Python: ``` brew install pyright ```
+### Linux (Debian/Ubuntu)
 
-* YML: ``` brew install yaml-language-server ```
+```sh
+sudo apt install neovim ripgrep git
+```
 
-* Ansible: ``` brew install ansible-language-server ```
+### Linux (Arch)
 
-* Bash: ``` brew install bash-language-server ```
+```sh
+sudo pacman -S neovim ripgrep git
+```
 
-## 3. Custom language lsp config can be found in here
-
-https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+Install a Nerd Font (e.g. [JetBrainsMono](https://www.nerdfonts.com/font-downloads)) and set it in your terminal emulator.

@@ -1,19 +1,14 @@
-return {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  ---@type snacks.Config
-  opts = {
-    explorer = {},
-    picker = {
-      layout = "telescope"
-    },
-    indent = {},
+local SnacksNvim = require('snacks')
+SnacksNvim.setup({
+  explorer = {},
+  scroll = {},
+  indent = {},
+  picker = {
+    layout = "telescope"
   },
+})
 
-  keys = {
-    { "<leader>e", function() Snacks.explorer() end, desc = "Explorer Snacks (root dir)", },
-    { "<leader>ff", function() Snacks.picker.files(opts) end, desc = "Snacks find files", },
-    { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep picker", },
-  }
-}
+vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "Explorer" })
+vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files(opts) end, { desc = "Files" })
+vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Help" })
