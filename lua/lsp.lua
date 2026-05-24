@@ -11,25 +11,22 @@ vim.keymap.set("n", "<leader>ll", function()
 end, { desc = "Toggle diagnostics (buffer)" })
 
 -- Toogle virtual text
-vim.keymap.set("n", "<leader>tv", function()
+vim.keymap.set("n", "<leader>lv", function()
   local current = vim.diagnostic.config().virtual_text
 
   vim.diagnostic.config({
     virtual_text = not current,
   })
-end)
+end, { desc = "Toogle virtual text" })
 
-vim.keymap.set("n", 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "<leader>lq", function() Snacks.picker.diagnostics_buffer() end, { desc = "Quickfix list (buffer)" })
+vim.keymap.set("n", "<leader>lQ", function() Snacks.picker.diagnostics() end, { desc = "Quickfix list (global)" })
 
--- Using Snacks.picker
---vim.keymap.set("n", 'gd', function() Snacks.picker.lsp_definitions() end, { desc = "Go to definition" })
---vim.keymap.set("n", 'gD', function() Snacks.picker.lsp_declarations() end, { desc = "Go to declaration" })
-
-vim.keymap.set("n", "df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format Local buffer" })
+vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "<leader>lF", vim.lsp.buf.format, { desc = "Format Local buffer" })
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   underline = true,
   update_in_insert = false,
   signs = {
@@ -57,4 +54,5 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.enable({
   "lua_ls",
+  "pyright",
 })

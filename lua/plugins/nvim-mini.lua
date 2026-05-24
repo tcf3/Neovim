@@ -9,11 +9,12 @@ MiniFiles.setup({
   },
 })
 
-vim.keymap.set("n", "-", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle mini file explorer" })
-vim.keymap.set("n", "<leader>-", function()
-  MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-  MiniFiles.reveal_cwd()
-end, { desc = "Toggle into currently opened file" })
+vim.keymap.set("n", "-", function() MiniFiles.open() end, { desc = "Minifiles" })
+vim.keymap.set("n", "<leader>-",
+  function()
+    MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+    MiniFiles.reveal_cwd()
+  end, { desc = "Minifiles (current folder)" })
 
 --- Completion
 local MiniCompletion = require("mini.completion")
@@ -70,8 +71,8 @@ MiniHipatterns.setup({
 -- Trail spaces
 local MiniTrailspace = require('mini.trailspace')
 MiniTrailspace.setup()
-vim.keymap.set("n", "<leader>ts", function() MiniTrailspace.trim() end, { desc = "Trim trail spaces" })
-vim.keymap.set("n", "<leader>tl", function() MiniTrailspace.trim_last_lines() end, { desc = "Remove empty lines" })
+vim.keymap.set("n", "<leader>ts", function() MiniTrailspace.trim() end, { desc = "Trailspaces" })
+vim.keymap.set("n", "<leader>tl", function() MiniTrailspace.trim_last_lines() end, { desc = "Empty lines" })
 
 -- Git
 local MiniDiff = require("mini.diff")
@@ -114,7 +115,6 @@ miniclue.setup({
   },
 
   clues = {
-    -- Enhance this by adding descriptions for <Leader> mapping groups
     miniclue.gen_clues.square_brackets(),
     miniclue.gen_clues.builtin_completion(),
     miniclue.gen_clues.g(),
@@ -122,7 +122,20 @@ miniclue.setup({
     miniclue.gen_clues.registers(),
     miniclue.gen_clues.windows(),
     miniclue.gen_clues.z(),
+
+    -- Custom description groups
+    { mode = 'n', keys = '<Leader>f', desc = '+Find' },
+    { mode = 'n', keys = '<Leader>l', desc = '+LSP' },
+    { mode = 'n', keys = '<Leader>b', desc = '+Buffers' },
+    { mode = 'n', keys = '<Leader>t', desc = '+Trim' },
   },
+
+  window = {
+    config = {
+      width = 50,
+      border = "rounded",
+    },
+  }
 })
 
 --- Cmdline completion
@@ -133,6 +146,7 @@ require("mini.pairs").setup()
 
 -- Icons
 require("mini.icons").setup()
+MiniIcons.tweak_lsp_kind()
 
 -- Statusline
 require("mini.statusline").setup()

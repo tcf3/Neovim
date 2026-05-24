@@ -5,7 +5,7 @@ vim.opt.cursorline = true      -- Highlight current line
 vim.opt.scrolloff = 10         -- Keep 10 lines above/below cursor
 vim.opt.sidescrolloff = 8      -- Keep 8 columns left/right of cursor
 vim.opt.wrap = false           -- Don't wrap lines
-vim.opt.cmdheight = 0          -- Command line height (0 only shows when pressing ':')
+vim.opt.cmdheight = 1          -- Command line height (0 only shows when pressing ':')
 vim.opt.laststatus = 3         -- One status bar per split screens
 
 -- Netrw

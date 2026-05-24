@@ -28,13 +28,6 @@ vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true, silent = true, d
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true, silent = true, desc = "Move buffer up" })
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true, silent = true, desc = "Move buffer right" })
 
--- Window management
-vim.keymap.set("n", "<leader>wq", "<C-w>q", { noremap = true, silent = true, desc = "Quit window" })
-vim.keymap.set("n", "<leader>wc", "<C-w>c", { noremap = true, silent = true, desc = "Close window" })
-vim.keymap.set("n", "<leader>wo", "<C-w>o", { noremap = true, silent = true, desc = "Only this window" })
-vim.keymap.set("n", "<leader>ws", "<C-w>s", { noremap = true, silent = true, desc = "Horizontal split" })
-vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, silent = true, desc = "Vertical split" })
-
 -- Move selection
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
@@ -49,4 +42,4 @@ vim.keymap.set("x", "p", '"_dP')
 vim.keymap.set("n", "<leader>u", function()
   vim.cmd.packadd("nvim.undotree")
   require("undotree").open()
-end, { desc = "Toggle Builtin Undotree" })
+end, { desc = "Undotree" })
