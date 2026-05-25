@@ -8,33 +8,23 @@ This config turns Neovim into an IDE.
 - [mini.nvim](https://github.com/nvim-mini/mini.nvim) — files, completion, snippets, surround, diff, statusline, icons, and more
 - [snacks.nvim](https://github.com/folke/snacks.nvim) — explorer, picker, scroll, indent
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) — LSP configuration
-- [mason.nvim](https://github.com/mason-org/mason.nvim) — LSP servers, DAP servers, linters, and formatters installer
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) — snippet collection
 
 ## Dependencies
 
 - Neovim >= 0.10
-- [ripgrep](https://github.com/BurntSushi/ripgrep) — grep backend
+- ripgrep
 - Nerd Font — icons
 - Git
 
-### macOS
+### Basic Packages
 
 ```sh
-brew install neovim ripgrep
-brew install --cask font-jetbrains-mono-nerd-font
+brew install neovim ripgrep font-jetbrains-mono-nerd-font
 ```
 
-### Linux (Debian/Ubuntu)
+### Language Servers & Formaters/Lint
 
 ```sh
-sudo apt install neovim ripgrep git
+brew install lua-language-server ansible-language-server pyright
 ```
-
-### Linux (Arch)
-
-```sh
-sudo pacman -S neovim ripgrep git
-```
-
-Install a Nerd Font (e.g. [JetBrainsMono](https://www.nerdfonts.com/font-downloads)) and set it in your terminal emulator.

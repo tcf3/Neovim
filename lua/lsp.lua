@@ -1,5 +1,3 @@
-require("mason").setup()
-
 -- Toogle LSP warnings in current buffer
 vim.keymap.set("n", "<leader>ll", function()
   local bufnr = vim.api.nvim_get_current_buf()
