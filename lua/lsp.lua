@@ -51,7 +51,7 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("ansiblels", {
-  filetype = { 'yaml' }
+  filetypes = { 'yaml' }
 })
 
 vim.lsp.enable({
