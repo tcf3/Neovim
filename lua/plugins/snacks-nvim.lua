@@ -1,7 +1,6 @@
 local SnacksNvim = require('snacks')
 SnacksNvim.setup({
   explorer = {},
-  scroll = {},
   indent = {},
   picker = {
     layout = "telescope"
